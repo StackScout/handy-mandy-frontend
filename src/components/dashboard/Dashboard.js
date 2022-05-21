@@ -12,9 +12,9 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="container grid">
+    <div className="container grid" id="container-id">
       {cards.map((card) => (
-        <DashboardCard card={card}></DashboardCard>
+        <DashboardCard card={card} key={card.title}></DashboardCard>
       ))}
     </div>
   );

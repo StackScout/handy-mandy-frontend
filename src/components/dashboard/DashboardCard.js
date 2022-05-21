@@ -5,7 +5,9 @@ const DashboardCard = (props) => {
   const { title, subtitle, path } = props.card;
   return (
     <Link className="card" to={path}>
-      <p className="card-title">{title}</p>
+      <div className="card-title">
+        <p>{title}</p>
+      </div>
       {subtitle && (
         <div className="card-subtitle">
           <p>{subtitle}</p>
