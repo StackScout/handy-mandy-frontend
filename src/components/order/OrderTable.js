@@ -6,10 +6,10 @@ const OrderTable = (props) => {
   const { orders } = props;
 
   return (
-    <div class="grid-container">
+    <div className="grid-container">
       <OrderHeader />
       <div className="grid-data-section">
-        {orders.map((order) => (
+        {orders?.map((order) => (
           <Order order={order} key={order.orderId} />
         ))}
       </div>

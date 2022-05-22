@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import {
   BrowserRouter as Router,
   Navigate,
@@ -7,197 +9,20 @@ import {
 import Dashboard from "./components/dashboard/Dashboard";
 import Header from "./components/header/Header";
 import OrderTable from "./components/order/OrderTable";
+import { useActions } from "./hooks/useActions";
 
 function App() {
-  const orders = [
-    {
-      orderId: 1,
-      venture: "Handy Mandy",
-      status: "Done",
-      paymentDate: "2022-01-31",
-      paymentStatus: "Paid",
-      dueDate: "2022-02-07",
-      customer: "Shelani Judie",
-      platform: "Instagram",
-      product: "Shutter Card",
-      qty: 1,
-      price: 2000,
-      delivery: "Free",
-      notes: "Dark Blue | Sudu | 33 | 5 Pics | Cheers with Beer Glasses",
-      address: "Shelani Judie, No. 257, Diggala Road, Kesbawa, Panadura",
-      mobile: "785776019",
-    },
-    {
-      orderId: 1,
-      venture: "Handy Mandy",
-      status: "Done",
-      paymentDate: "2022-01-31",
-      paymentStatus: "Paid",
-      dueDate: "2022-02-07",
-      customer: "Shelani Judie",
-      platform: "Instagram",
-      product: "Shutter Card",
-      qty: 1,
-      price: 2000,
-      delivery: "Free",
-      notes: "Dark Blue | Sudu | 33 | 5 Pics | Cheers with Beer Glasses",
-      address: "Shelani Judie, No. 257, Diggala Road, Kesbawa, Panadura",
-      mobile: "785776019",
-    },
-    {
-      orderId: 1,
-      venture: "Handy Mandy",
-      status: "Done",
-      paymentDate: "2022-01-31",
-      paymentStatus: "Paid",
-      dueDate: "2022-02-07",
-      customer: "Shelani Judie",
-      platform: "Instagram",
-      product: "Shutter Card",
-      qty: 1,
-      price: 2000,
-      delivery: "Free",
-      notes: "Dark Blue | Sudu | 33 | 5 Pics | Cheers with Beer Glasses",
-      address: "Shelani Judie, No. 257, Diggala Road, Kesbawa, Panadura",
-      mobile: "785776019",
-    },
-    {
-      orderId: 1,
-      venture: "Handy Mandy",
-      status: "Done",
-      paymentDate: "2022-01-31",
-      paymentStatus: "Paid",
-      dueDate: "2022-02-07",
-      customer: "Shelani Judie",
-      platform: "Instagram",
-      product: "Shutter Card",
-      qty: 1,
-      price: 2000,
-      delivery: "Free",
-      notes: "Dark Blue | Sudu | 33 | 5 Pics | Cheers with Beer Glasses",
-      address: "Shelani Judie, No. 257, Diggala Road, Kesbawa, Panadura",
-      mobile: "785776019",
-    },
-    {
-      orderId: 1,
-      venture: "Handy Mandy",
-      status: "Done",
-      paymentDate: "2022-01-31",
-      paymentStatus: "Paid",
-      dueDate: "2022-02-07",
-      customer: "Shelani Judie",
-      platform: "Instagram",
-      product: "Shutter Card",
-      qty: 1,
-      price: 2000,
-      delivery: "Free",
-      notes: "Dark Blue | Sudu | 33 | 5 Pics | Cheers with Beer Glasses",
-      address: "Shelani Judie, No. 257, Diggala Road, Kesbawa, Panadura",
-      mobile: "785776019",
-    },
-    {
-      orderId: 1,
-      venture: "Handy Mandy",
-      status: "Done",
-      paymentDate: "2022-01-31",
-      paymentStatus: "Paid",
-      dueDate: "2022-02-07",
-      customer: "Shelani Judie",
-      platform: "Instagram",
-      product: "Shutter Card",
-      qty: 1,
-      price: 2000,
-      delivery: "Free",
-      notes: "Dark Blue | Sudu | 33 | 5 Pics | Cheers with Beer Glasses",
-      address: "Shelani Judie, No. 257, Diggala Road, Kesbawa, Panadura",
-      mobile: "785776019",
-    },
-    {
-      orderId: 1,
-      venture: "Handy Mandy",
-      status: "Done",
-      paymentDate: "2022-01-31",
-      paymentStatus: "Paid",
-      dueDate: "2022-02-07",
-      customer: "Shelani Judie",
-      platform: "Instagram",
-      product: "Shutter Card",
-      qty: 1,
-      price: 2000,
-      delivery: "Free",
-      notes: "Dark Blue | Sudu | 33 | 5 Pics | Cheers with Beer Glasses",
-      address: "Shelani Judie, No. 257, Diggala Road, Kesbawa, Panadura",
-      mobile: "785776019",
-    },
-    {
-      orderId: 1,
-      venture: "Handy Mandy",
-      status: "Done",
-      paymentDate: "2022-01-31",
-      paymentStatus: "Paid",
-      dueDate: "2022-02-07",
-      customer: "Shelani Judie",
-      platform: "Instagram",
-      product: "Shutter Card",
-      qty: 1,
-      price: 2000,
-      delivery: "Free",
-      notes: "Dark Blue | Sudu | 33 | 5 Pics | Cheers with Beer Glasses",
-      address: "Shelani Judie, No. 257, Diggala Road, Kesbawa, Panadura",
-      mobile: "785776019",
-    },
-    {
-      orderId: 1,
-      venture: "Handy Mandy",
-      status: "Done",
-      paymentDate: "2022-01-31",
-      paymentStatus: "Paid",
-      dueDate: "2022-02-07",
-      customer: "Shelani Judie",
-      platform: "Instagram",
-      product: "Shutter Card",
-      qty: 1,
-      price: 2000,
-      delivery: "Free",
-      notes: "Dark Blue | Sudu | 33 | 5 Pics | Cheers with Beer Glasses",
-      address: "Shelani Judie, No. 257, Diggala Road, Kesbawa, Panadura",
-      mobile: "785776019",
-    },
-    {
-      orderId: 1,
-      venture: "Handy Mandy",
-      status: "Done",
-      paymentDate: "2022-01-31",
-      paymentStatus: "Paid",
-      dueDate: "2022-02-07",
-      customer: "Shelani Judie",
-      platform: "Instagram",
-      product: "Shutter Card",
-      qty: 1,
-      price: 2000,
-      delivery: "Free",
-      notes: "Dark Blue | Sudu | 33 | 5 Pics | Cheers with Beer Glasses",
-      address: "Shelani Judie, No. 257, Diggala Road, Kesbawa, Panadura",
-      mobile: "785776019",
-    },
-    {
-      orderId: 1,
-      venture: "Handy Mandy",
-      status: "Done",
-      paymentDate: "2022-01-31",
-      paymentStatus: "Paid",
-      dueDate: "2022-02-07",
-      customer: "Shelani Judie",
-      platform: "Instagram",
-      product: "Shutter Card",
-      qty: 1,
-      price: 2000,
-      delivery: "Free",
-      notes: "Dark Blue | Sudu | 33 | 5 Pics | Cheers with Beer Glasses",
-      address: "Shelani Judie, No. 257, Diggala Road, Kesbawa, Panadura",
-      mobile: "785776019",
-    },
-  ];
+  const { fetchOrders } = useActions();
+  const { data, fetching } = useSelector((state) => {
+    console.log("state: ", state);
+    return state.orders;
+  });
+
+  console.log("data: ", data);
+
+  useEffect(() => {
+    fetchOrders();
+  }, []);
 
   return (
     <>
@@ -205,7 +30,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/orders" element={<OrderTable orders={orders} />} />
+          <Route path="/orders" element={<OrderTable orders={data} />} />
           <Route path="/" element={<Navigate to="/dashboard" />} />
         </Routes>
       </Router>
