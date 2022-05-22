@@ -13,12 +13,7 @@ import { useActions } from "./hooks/useActions";
 
 function App() {
   const { fetchOrders } = useActions();
-  const { data, fetching } = useSelector((state) => {
-    console.log("state: ", state);
-    return state.orders;
-  });
-
-  console.log("data: ", data);
+  const { data: orders } = useSelector((state) => state.orders);
 
   useEffect(() => {
     fetchOrders();
@@ -30,7 +25,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/orders" element={<OrderTable orders={data} />} />
+          <Route path="/orders" element={<OrderTable orders={orders} />} />
           <Route path="/" element={<Navigate to="/dashboard" />} />
         </Routes>
       </Router>
