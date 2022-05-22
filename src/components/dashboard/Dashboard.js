@@ -12,11 +12,13 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="container grid" id="container-id">
-      {cards.map((card) => (
-        <DashboardCard card={card} key={card.title}></DashboardCard>
-      ))}
-    </div>
+    <>
+      <div className="container grid" id="container-id">
+        {cards.map((card) => (
+          <DashboardCard card={card} key={card.title}></DashboardCard>
+        ))}
+      </div>
+    </>
   );
 };
 
